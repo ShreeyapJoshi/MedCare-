@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Schedule Appointment</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header>
+    <h1>Sanctuary Health Haven</h1>
+    <p>Schedule Appointment</p>
+  </header>
+
+  <nav>
+    <a href="register-patient.html">Patients</a>
+    <a href="schedule-appointment.html">Appointments</a>
+    <a href="feedback.html">Feedback</a>
+    <a href="symptom-checker.html">Symptom Checker</a>
+    <a href="staff.html">Staff</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+
+  <section>
+    <h2>Schedule Appointment</h2>
+    <form id="appointment-form">
+      <input type="text" id="appointmentName" placeholder="Patient Name">
+      <input type="date" id="appointmentDate">
+      <select id="appointmentDoctor">
+        <option value="Dr. Verma">Dr. Verma</option>
+        <option value="Dr. Rao">Dr. Rao</option>
+      </select>
+      <button type="button" onclick="addAppointment()">Schedule</button>
+    </form>
+    <table id="appointment-table">
+      <tr><th>Name</th><th>Date</th><th>Doctor</th></tr>
+    </table>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Sanctuary Health Haven</p>
+  </footer>
+
+  <script>
+    function addAppointment() {
+      const name = document.getElementById('appointmentName').value;
+      const date = document.getElementById('appointmentDate').value;
+      const doctor = document.getElementById('appointmentDoctor').value;
+      if(name && date && doctor) {
+        const table = document.getElementById('appointment-table');
+        const row = table.insertRow();
+        row.classList.add('highlight');
+        row.innerHTML = `<td>${name}</td><td>${date}</td><td>${doctor}</td>`;
+        document.getElementById('appointment-form').reset();
+      }
+    }
+  </script>
+</body>
+</html>
+

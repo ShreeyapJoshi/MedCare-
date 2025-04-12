@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Register Patient</title>
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f0f8ff;
+    }
+    header {
+      background-color: #006d77;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      position: relative;
+    }
+    header img {
+      position: absolute;
+      left: 20px;
+      top: 10px;
+      height: 60px;
+    }
+    nav {
+      display: flex;
+      justify-content: center;
+      background-color: #005259;
+    }
+    nav a {
+      color: white;
+      padding: 14px 20px;
+      text-decoration: none;
+    }
+    nav a:hover {
+      background-color: #00404a;
+    }
+    .banner {
+      width: 100%;
+      height: auto;
+    }
+    section {
+      padding: 30px;
+      margin: 20px;
+      background-color: white;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      display: flex;
+      gap: 40px;
+    }
+    form {
+      flex: 1;
+    }
+    input, button {
+      display: block;
+      margin: 10px 0;
+      padding: 10px;
+      width: 100%;
+      max-width: 400px;
+    }
+    table {
+      margin-top: 20px;
+      width: 100%;
+      border-collapse: collapse;
+    }
+    th, td {
+      border: 1px solid #ccc;
+      padding: 10px;
+    }
+    .highlight {
+      background-color: #e0f7fa;
+    }
+    .form-image {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .form-image img {
+      width: 100%;
+      max-width: 300px;
+      border-radius: 12px;
+    }
+    footer {
+      text-align: center;
+      background-color: #006d77;
+      color: white;
+      padding: 15px;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Sanctuary Health Haven</h1>
+    <p>Register Patient</p>
+  </header>
+
+  <nav>
+    <a href="register-patient.html">Patients</a>
+    <a href="schedule-appointment.html">Appointments</a>
+    <a href="feedback.html">Feedback</a>
+    <a href="symptom-checker.html">Symptom Checker</a>
+    <a href="staff.html">Staff</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+
+  <section>
+    <form id="patient-form">
+      <h2>Register Patient</h2>
+      <input type="text" id="patientName" placeholder="Patient Name" required>
+      <input type="number" id="patientAge" placeholder="Age" required>
+      <input type="text" id="patientIssue" placeholder="Health Issue" required>
+      <button type="button" onclick="addPatient()">Add Patient</button>
+      <table id="patient-table">
+        <tr><th>Name</th><th>Age</th><th>Issue</th></tr>
+      </table>
+    </form>
+    
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Sanctuary Health Haven</p>
+  </footer>
+
+  <script>
+    function addPatient() {
+      const name = document.getElementById('patientName').value;
+      const age = document.getElementById('patientAge').value;
+      const issue = document.getElementById('patientIssue').value;
+      if(name && age && issue) {
+        const table = document.getElementById('patient-table');
+        const row = table.insertRow();
+        row.classList.add('highlight');
+        row.innerHTML = `<td>${name}</td><td>${age}</td><td>${issue}</td>`;
+        document.getElementById('patient-form').reset();
+      }
+    }
+  </script>
+
+</body>
+</html>

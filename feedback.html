@@ -1,0 +1,53 @@
+<!-- feedback.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Patient Feedback</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header>
+    <h1>Sanctuary Health Haven</h1>
+    <p>Patient Feedback</p>
+  </header>
+
+  <nav>
+    <a href="register-patient.html">Patients</a>
+    <a href="schedule-appointment.html">Appointments</a>
+    <a href="feedback.html">Feedback</a>
+    <a href="symptom-checker.html">Symptom Checker</a>
+    <a href="staff.html">Staff</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+
+  <section>
+    <h2>Patient Feedback</h2>
+    <form id="feedback-form">
+      <input type="text" id="feedbackName" placeholder="Your Name">
+      <textarea id="feedbackText" rows="4" placeholder="Your Feedback"></textarea>
+      <button type="button" onclick="addFeedback()">Submit Feedback</button>
+    </form>
+    <ul id="feedback-list"></ul>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Sanctuary Health Haven</p>
+  </footer>
+
+  <script>
+    function addFeedback() {
+      const name = document.getElementById('feedbackName').value;
+      const feedback = document.getElementById('feedbackText').value;
+      if(name && feedback) {
+        const list = document.getElementById('feedback-list');
+        const item = document.createElement('li');
+        item.innerHTML = `<strong>${name}</strong>: ${feedback}`;
+        list.appendChild(item);
+        document.getElementById('feedback-form').reset();
+      }
+    }
+  </script>
+</body>
+</html>

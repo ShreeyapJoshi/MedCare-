@@ -1,0 +1,58 @@
+<!-- symptom-checker.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Symptom Checker</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <h1>Sanctuary Health Haven</h1>
+    <p>Symptom Checker</p>
+  </header>
+
+  <nav>
+    <a href="register-patient.html">Patients</a>
+    <a href="schedule-appointment.html">Appointments</a>
+    <a href="feedback.html">Feedback</a>
+    <a href="symptom-checker.html">Symptom Checker</a>
+    <a href="staff.html">Staff</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+
+  <section>
+    <h2>Symptom Checker</h2>
+    <form id="symptom-form">
+      <input type="text" id="symptomName" placeholder="Your Name">
+      <textarea id="symptoms" rows="4" placeholder="Describe your symptoms"></textarea>
+      <button type="button" onclick="checkSymptoms()">Check</button>
+    </form>
+    <div id="suggestion-result"></div>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Sanctuary Health Haven</p>
+  </footer>
+
+  <script>
+    function checkSymptoms() {
+      const symptoms = document.getElementById('symptoms').value.toLowerCase();
+      let suggestion = 'Please consult General Physician.';
+
+      if (symptoms.includes('fever') && symptoms.includes('cough')) {
+        suggestion = 'Recommended Department: Internal Medicine. Suggested Doctor: Dr. Verma.';
+      } else if (symptoms.includes('rash') || symptoms.includes('itch')) {
+        suggestion = 'Recommended Department: Dermatology (not available currently).';
+      } else if (symptoms.includes('child') || symptoms.includes('baby')) {
+        suggestion = 'Recommended Department: Pediatrics. Suggested Doctor: Dr. Rao.';
+      } else if (symptoms.includes('pain') && symptoms.includes('chest')) {
+        suggestion = 'Urgency Level: HIGH. Visit ER immediately!';
+      }
+
+      document.getElementById('suggestion-result').innerHTML = `<p><strong>Suggestion:</strong> ${suggestion}</p>`;
+    }
+  </script>
+</body>
+</html>
